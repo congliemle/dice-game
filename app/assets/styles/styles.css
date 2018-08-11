@@ -16,7 +16,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(back.jpg);
+    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url('../../../assets/images/back.jpg');
     background-size: cover;
     background-position: center;
     font-family: Roboto;
@@ -24,6 +24,13 @@ body {
     position: relative;
     height: 100vh;
     color: blue;
+}
+
+.rules {
+    font-size: 1.2rem;
+    color: white;
+    position: relative;
+    left: 28.125rem;
 }
 
 .wrapper {
