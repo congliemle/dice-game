@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-let input, scoreToWin, scores, lastDice, roundScore, activePlayer, gamePlaying;
+let input, scoreToWin, scores, roundScore, activePlayer, gamePlaying;
 
 
 init();
@@ -45,19 +45,19 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         //2. Display the result
         document.getElementById('dice-1').style.display = 'block';
         document.getElementById('dice-2').style.display = 'block';
-        document.getElementById('dice-1').src = 'assets/images/dice-' + dice1 + '.png';
-        document.getElementById('dice-2').src = 'assets/images/dice-' + dice2 + '.png';
+        document.getElementById('dice-1').src = `assets/images/dice-${dice1}.png`;
+        document.getElementById('dice-2').src = `assets/images/dice-${dice2}.png`;
 
         //3. Update new rules of game version 2
         if (dice1 === 6 && dice2 === 6) {
             // Player lost all scores
             scores[activePlayer] = 0;
-            document.querySelector('#score-' + activePlayer).textContent = '0';
+            document.querySelector(`#score-${activePlayer}`).textContent = '0';
             nextPlayer();
         } else if (dice1 !== 1 && dice2 !== 1) {
             //Add score
             roundScore += dice1 + dice2;
-            document.querySelector('#current-' + activePlayer).textContent = roundScore;            
+            document.querySelector(`#current-${activePlayer}`).textContent = roundScore;            
         } else {
             //Next player
             nextPlayer();
@@ -71,7 +71,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         scores[activePlayer] += roundScore;
 
         // Update the UI
-        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+        document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
 
         input = document.querySelector('.final-score').value;
         
@@ -83,11 +83,11 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 
         // Check if player won the game
         if (scores[activePlayer] >= scoreToWin) {
-            document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+            document.querySelector(`#name-${activePlayer}`).textContent = 'Winner!';
             document.getElementById('dice-1').style.display = 'none';
             document.getElementById('dice-2').style.display = 'none';
-            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+            document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
+            document.querySelector(`.player-${activePlayer}-panel`).classList.remove('active');
             gamePlaying = false;
         } else {
             //Next player
